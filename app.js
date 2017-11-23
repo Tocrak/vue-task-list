@@ -1,5 +1,5 @@
 new Vue({
 
-	el: '#root'
+	el: '#app'
 
 });
