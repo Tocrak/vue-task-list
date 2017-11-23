@@ -11,8 +11,16 @@ new Vue({
 
 	methods: {
 		addTask: function(event) {
-			this.tasks.push({do: 'read', done: false})
-		}
+
+			this.tasks.push({do: 'read', done: false});
+
+		},
+		toggleDone: function(event) {
+
+		  event.preventDefault();
+		  event.target.style.color = '#F00';
+
+		},
 	}
 
 });
