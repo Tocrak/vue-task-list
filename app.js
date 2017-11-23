@@ -3,6 +3,7 @@ new Vue({
 	el: '#app',
 
 	data: {
+		newtask: '',
 		tasks: [
 			{ do: 'eat', done: true },
 			{ do: 'sleep', done: false }
@@ -11,16 +12,16 @@ new Vue({
 
 	methods: {
 		addTask: function(event) {
-
-			this.tasks.push({do: 'read', done: false});
-
+			this.tasks.push({do: this.newtask, done: false});
+			this.newtask = '';
 		},
-		toggleDone: function(event) {
-
-		  event.preventDefault();
-		  event.target.style.color = '#F00';
-
+		removeTask: function(index) {
+			this.tasks.splice(index, 1);
+			return false;
 		},
+		toggleDone: function(index) {
+		  this.tasks[index].done = !this.tasks[index].done;
+		}
 	}
 
 });

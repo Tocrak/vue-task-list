@@ -5,17 +5,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>VueJS</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
-	<style>body { padding: 40px; }</style>
+	<style>
+		body {
+			padding: 40px;
+		}
+		.done {
+			color: #aaa;
+		}
+		li {
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
 
 	<div id="app" class="content">
 
 		<ul class="list">
-			<li v-for="task in tasks"><a href="#">{{ task.do }}</a></li>
+			<li v-for="(task, index) in tasks" :class="{ done: task.done }" @click="toggleDone(index)">
+				{{ task.do }}
+				<a @click="removeTask(index)" href="#">remove</a>
+			</li>
 		</ul>
 
-		<button class="button is-dark" @click="addTask">test</button>
+		<input type="text" v-model="newtask">
+		<button class="button is-dark" @click="addTask">Add Task</button>
 
 	</div>
 
