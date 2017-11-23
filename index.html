@@ -5,10 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>VueJS</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
+	<style>body { padding: 40px; }</style>
 </head>
 <body>
 
-	<div id="app">
+	<div id="app" class="content">
+
+		<ul class="list">
+			<li v-for="task in tasks"><a href="#">{{ task.do }}</a></li>
+		</ul>
+
+		<button class="button is-dark" @click="addTask">test</button>
 
 	</div>
 
