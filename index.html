@@ -6,32 +6,35 @@
 	<title>VueJS</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
 	<style>
-		body {
-			padding: 40px;
-		}
-		.done {
-			color: #aaa;
-		}
-		li {
-			cursor: pointer;
-		}
+	body {
+		padding: 40px;
+	}
+	.done {
+		color: #ccc;
+	}
 	</style>
 </head>
 <body>
 
-	<div id="app" class="content">
+	<div id="app" class="container">
 
-		<ul class="list">
-			<li v-for="(task, index) in tasks" :class="{ done: task.done }" @click="toggleDone(index)">
-				{{ task.do }}
-				<a @click="removeTask(index)" href="#">remove</a>
-			</li>
+		<ul class="content">
+				<li class="tags has-addons" v-for="(task, index) in tasks">
+					<a href="#" @click="toggleDone(index, $event)" :class="{ done: task.done }" v-text="task.do"></a>
+					&nbsp;|&nbsp;<a href="#" @click="removeTask(index, $event)">Remove</a>
+				</li>
 		</ul>
 
-		<input type="text" v-model="newtask">
-		<button class="button is-dark" @click="addTask">Add Task</button>
+		<div class="field has-addons">
+			<div class="control is-expanded">
+				<input class="input" type="text" v-model="newtask">
+			</div>
+			<div class="control">
+				<button class="button is-info" @click="addTask">Add Task</button>
+			</div>
+		</div>
 
-	</div>
+</div>
 
 	<script src="https://unpkg.com/vue"></script>
 	<script src="app.js"></script>
