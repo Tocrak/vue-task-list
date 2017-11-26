@@ -12,15 +12,18 @@
 	.done {
 		color: #ccc;
 	}
+	[v-cloak] {
+		display: none
+	}
 	</style>
 </head>
 <body>
 
-	<div id="app" class="container">
+	<div id="app" class="container" v-cloak>
 
 		<ul class="content">
 				<li class="tags has-addons" v-for="(task, index) in tasks">
-					<a href="#" @click="toggleDone(index, $event)" :class="{ done: task.done }" v-text="task.do"></a>
+					<a href="#" @click="toggleDone(index, $event)" :class="{ done: task.done }">{{ task.do }}</a>
 					&nbsp;|&nbsp;<a href="#" @click="removeTask(index, $event)">Remove</a>
 				</li>
 		</ul>
