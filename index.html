@@ -21,10 +21,10 @@
 
 	<div id="app" class="container" v-cloak>
 
-		<ul class="content">
+		<ul class="content" v-on.click.prevent>
 				<li class="tags has-addons" v-for="(task, index) in tasks">
-					<a href="#" @click="toggleDone(index, $event)" :class="{ done: task.done }">{{ task.do }}</a>
-					&nbsp;|&nbsp;<a href="#" @click="removeTask(index, $event)">Remove</a>
+					<a href="#" v-on:click="toggleDone(index)" v-bind:class="{ done: task.done }">{{ task.do }}</a>
+					&nbsp;|&nbsp;<a href="#" v-on:click="removeTask(index)">Remove</a>
 				</li>
 		</ul>
 
@@ -33,7 +33,7 @@
 				<input class="input" type="text" v-model="newtask">
 			</div>
 			<div class="control">
-				<button class="button is-info" @click="addTask">Add Task</button>
+				<button class="button is-info" v-on:click="addTask">Add Task</button>
 			</div>
 		</div>
 
