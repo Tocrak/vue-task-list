@@ -20,14 +20,12 @@ new Vue({
 			localStorage.setItem('tasks', JSON.stringify(this.tasks));
 			this.newtask = '';
 		},
-		removeTask: function(index, evn) {
-			evn.preventDefault();
+		removeTask: function(index) {
 			this.tasks.splice(index, 1);
 			window.localStorage.setItem('tasks', JSON.stringify(this.tasks));
 		},
-		toggleDone: function(index, evn) {
-			evn.preventDefault();
-		  this.tasks[index].done = !this.tasks[index].done;
+		toggleDone: function(index) {
+		  	this.tasks[index].done = !this.tasks[index].done;
 			window.localStorage.setItem('tasks', JSON.stringify(this.tasks));
 		}
 	}
