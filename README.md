@@ -1,2 +1,1 @@
-# vue-basic-app
-Basic application in VueJS
+# Smells Like Almonds
