@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>VueJS</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
+	<style>
+	body {
+		padding: 40px;
+	}
+	.done {
+		color: #ccc;
+	}
+	[v-cloak] {
+		display: none
+	}
+	</style>
+</head>
+<body>
+
+	<div id="app" class="container" v-cloak>
+
+		<div v-if="value.length != 0" v-for="(value, name) in tasks">
+
+			<ul class="content" v-on.click.prevent>
+					<li class="tags has-addons" v-for="(task, index) in value">
+						<a v-on:click="toggleDone(name, index)" v-bind:class="{ done: task.status }">{{ task.text }}</a>
+						&nbsp;|&nbsp;<a v-on:click="removeTask(name, index)">Remove</a>
+					</li>
+			</ul>
+
+			<div class="field has-addons">
+				<div class="control is-expanded">
+					<input class="input" type="text" v-model="newtask">
+				</div>
+				<div class="control">
+					<button class="button is-info" v-on:click="addTask(name)">Add Task</button>
+				</div>
+			</div>
+		
+			<hr>
+		</div>
+
+		<div>
+			<div class="field has-addons">
+				<div class="control is-expanded">
+					<input class="input" type="text" v-model="newtask">
+				</div>
+				<div class="control">
+					<button class="button is-info" v-on:click="addTask(Object.keys(tasks).length)">Add Task in New Task List</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://unpkg.com/vue"></script>
+	<script src="app.js"></script>
+</body>
+</html>
